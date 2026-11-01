@@ -1,0 +1,6 @@
+# Raw WordPress exports (private; kept locally only)
+*.WordPress.*.xml
+media-export-*.tar
+
+.DS_Store
+snailedit-migration-brief.md

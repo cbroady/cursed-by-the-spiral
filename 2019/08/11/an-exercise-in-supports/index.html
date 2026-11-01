@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An Exercise in Supports – Cursed by the Spiral</title>
+<meta name="description" content="For a while I have been interested in incorporating auto-generated support structures into the final part geometry for 3D print jobs using PreForm, Formlabs&#x27; printer driver software. Over the year,…">
+<link rel="icon" href="../../../../assets/snail.png">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body class="">
+<header class="masthead">
+  <a class="brand" href="../../../../"><img src="../../../../assets/snail.png" alt="" width="40" height="40"><span>Cursed by the Spiral</span></a>
+  <nav><a href="../../../../">All posts</a><a href="../../../../../">snailedit.xyz</a></nav>
+</header>
+<main class="post">
+<article>
+  <header class="post-header">
+    <p class="post-date"><time datetime="2019-08-11">August 11, 2019</time></p>
+    <h1>An Exercise in Supports</h1>
+  </header>
+  <div class="entry">
+<p>For a while I have been interested in incorporating auto-generated support structures into the final part geometry for 3D print jobs using PreForm, Formlabs' printer driver software. Over the year, the team at Formlabs has done a decent job reducing the amount of resin spent on generating support structures (especially with the mini rafts introduced earlier this year), but at the end of the day support structures end up as waste.</p>
+
+<p>If all of that sounds like gibberish to you, allow me to explain. Many parts that are 3D printed are not self-supporting, and they require additional scaffolding (known as support structures) to be printed along with the part. The support structures cradle the part and ensure that the geometry can be formed as expected. Once the print is done, the part is removed from the supports, and the supports are discarded.</p>
+
+<div class="wp-block-image"><figure class="alignleft is-resized"><img src="../../../../media/2019/08/image.jpg" alt="" loading="lazy" decoding="async"><figcaption>Version 1 was not very good. The "phone" was impossible to remove without destroying the supports.</figcaption></figure></div>
+
+<p>A few weeks ago, a coworker asked if I could help her print a phone holder for her desk. I got to thinking that it would be awesome to have a phone holder that was entirely made of support structures, each touch tip cradling the phone. So I printed an iPhone 6 model, angled 25 degrees from vertical. The idea was that I would remove the model, post-cure the support, and then be able to put my phone where the model was. Immediately I ran into the issue that the model was fairly robust but the support structures were easy to break and remove. Any attempt to remove the supports resulted in their destruction. I also realized that the small support structures could scratch the phone body. So I abandoned this idea.</p>
+
+<p>Next I designed a thin part that cradles the back perimeter of the phone as well as the bottom edge. To add some fun to it, I put a snail sketch in the middle of the part that is also held up by support structures. Once imported into PreForm, I didn’t adjust the orientation at all because ultimately the support raft will become the base of the part.</p>
+
+<p>The first version came out great, printed in tough (V5) with 100µm thick layers.</p>
+
+<div class="wp-block-coblocks-gallery-masonry alignwide"><div class="coblocks-gallery has-caption-style-dark has-gutter"><ul class="has-grid-lrg has-gutter-15 has-gutter-mobile-15"><li class="coblocks-gallery--item"><figure class="coblocks-gallery--figure"><img src="../../../../media/2019/08/pf.jpg" alt="" loading="lazy" decoding="async"></figure></li><li class="coblocks-gallery--item"><figure class="coblocks-gallery--figure"><img src="../../../../media/2019/08/image-1.jpg" alt="" loading="lazy" decoding="async"></figure></li><li class="coblocks-gallery--item"><figure class="coblocks-gallery--figure"><img src="../../../../media/2019/08/angledd.jpg" alt="" loading="lazy" decoding="async"></figure></li></ul></div></div>
+
+<p>Another coworker suggested that I design it to allow for a charging cable. Because I have a relatively old iPhone 6, it loses power quickly, and I found myself often putting the phone in the holder horizontally with the cable sticking out the side. This was silly, so I added a feature to hold a cable in place. It resulted in a much taller part, but it’s essentially the same.</p>
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img src="../../../../media/2019/08/phwc.jpg" alt="" loading="lazy" decoding="async"><figcaption>Latest design with charging cable</figcaption></figure></div>
+
+<p>What do you think? Have you made any parts that incorporated PreForm-generated support structures into the part design?</p>
+
+<h2>Do-It-Yourself</h2>
+
+<p>I’ve recently been using Onshape quite a bit, and I modeled this part in Onshape. The CAD design is public, and you can find the document at <a href="https://cad.onshape.com/documents/b2594102429ea3eb14ee2458/w/bbef57f62b73b419754d3602/e/21758ebae48b70a4c81475af">this link</a>. With a free Onshape account, you can copy the document into your account. Configurations (well, Part Studios) already exist for the iPhone 6 with snail and cable routing (specifically for <a href="https://smile.amazon.com/AmazonBasics-Lightning-Advanced-Collection-Certified/dp/B0753Q47X3">Amazon Basics lightning cable</a>) and for the Moto G5 Plus with Welsh Terrier.</p>
+
+<figure class="wp-block-image size-large"><img src="../../../../media/2019/08/os.png" alt="" loading="lazy" decoding="async"><figcaption>I have a lot of good things to say about Onshape</figcaption></figure>
+
+<p>Changing the variables #phone_thickness, #phone_height, and #phone_width should rebuild the model to the right size for your phone. Note that the height I used for the iPhone 6 is actually a bit shorter than the phone in order to avoid the protruding camera lens. To change the animal, simply edit the “Terrier Sketch” or “Snail Sketch”*, use the “Insert Image” command, position the image to where you want it, and trace the image with the “Spline” command. Make sure that the spline you sketch is closed and that you delete the sketch entities from the snail/terrier for error-free feature rebuild.</p>
+
+<p>Setting up in PreForm is pretty easy. I printed the part using Tough and Color Kit, but I think most resins should be fine. I turned up the touch tip size by about 0.1mm (we don’t want the supports coming off here). This part was printed on the Form 2, but for Form 3 I would increased touch tip size by at least 0.2mm. I also increased density to 1.20 and slope multiplier to 1.50 for extra supports. Lastly I viewed the supports from the side and eliminated any support structures that generated inside the region where the phone would sit. In the images below, the "before" is on the left, with support structures breaking the phone plane. On the right is the "after" when I eliminated the touch tips that contributed to the plane break.</p>
+
+<div class="wp-block-coblocks-gallery-masonry alignwide"><div class="coblocks-gallery has-caption-style-dark has-gutter"><ul class="has-grid-lrg has-gutter-15 has-gutter-mobile-15"><li class="coblocks-gallery--item"><figure class="coblocks-gallery--figure"><img src="../../../../media/2019/08/preform-side-before.png" alt="" loading="lazy" decoding="async"></figure></li><li class="coblocks-gallery--item"><figure class="coblocks-gallery--figure"><img src="../../../../media/2019/08/preform-side-after.png" alt="" loading="lazy" decoding="async"></figure></li></ul></div></div>
+
+<p>Export the parts together by right clicking the Part Studio and clicking "Export..." using the STL option. Print the part, wash the part, cure the part.</p>
+
+<p>If you used the model with cable routing, you may need to snip away a few support trusses in order to weave the cable into place. Other than that, it should be good to use.</p>
+
+<figure class="wp-block-image size-large"><img src="../../../../media/2019/08/unadjustednonraw_thumb_5d05.jpg" alt="" loading="lazy" decoding="async"><figcaption>I had to snip away the trusses in the circled region in order to snake in the cable</figcaption></figure>
+
+<p>*the snail shape was actually derived from a Solidworks Block body that I inserted, so the feature tree for the Snail - iPhone 6 Part Studio is a bit convoluted.</p>
+  </div>
+</article>
+<nav class="post-nav">
+  <a class="prev" href="../../../../2019/07/28/an-open-letter-to-jj-abrams/"><small>← Previous</small>An Open Letter to JJ Abrams</a>
+  <a class="next" href="../../../../2019/11/10/apparently-the-form-2-is-in-a-comcast-business-ad/"><small>Next →</small>Apparently the Form 2 is in a Comcast Business ad</a>
+</nav>
+</main>
+<footer class="site-footer">
+  <svg class="spiral" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 m0 0 a3 3 0 0 1 6 0 a6 6 0 0 1 -12 0 a10 10 0 0 1 20 0 a15 15 0 0 1 -30 0 a21 21 0 0 1 42 0 a28 28 0 0 1 -56 0 a36 36 0 0 1 72 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+  <p>Cursed by the Spiral · written by Craig Broady, 2019–2021 · <a href="../../../../../">snailedit.xyz</a></p>
+</footer>
+</body>
+</html>
